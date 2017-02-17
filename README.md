@@ -4,20 +4,20 @@ a sonnet generator
 
 example, generated from the text of Mary Shelley's Frankenstein:
 
-within me a secret i have copies
-feature and gesture seemed instigated
-continued to search the country parties
-learned the ideas appropriated
-
-prescribed medicines and the subsequent blight
-that i were to brave men who wished to rouse
-innumerable instances which although slight
-several hours to live at our house
-
-palaces i had none to participate
-he shrieked out imprecations on his rival
-thought and misery could not penetrate
-insensible to the most delightful
-
-my feelings of indignation delight
-contrary but that could tend to excite
+within me a secret i have copies<br>
+feature and gesture seemed instigated<br>
+continued to search the country parties<br>
+learned the ideas appropriated<br>
+<br>
+prescribed medicines and the subsequent blight<br>
+that i were to brave men who wished to rouse<br>
+innumerable instances which although slight<br>
+several hours to live at our house<br>
+<br>
+palaces i had none to participate<br>
+he shrieked out imprecations on his rival<br>
+thought and misery could not penetrate<br>
+insensible to the most delightful<br>
+<br>
+my feelings of indignation delight<br>
+contrary but that could tend to excite<br>
