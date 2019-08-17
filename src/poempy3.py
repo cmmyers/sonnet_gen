@@ -75,7 +75,7 @@ class Poem(object):
 
     def make_pron_dict(self):
         self.pron_dict = {}
-        print("Now creating pronounciation dictionary")
+        print("\n\nNow creating pronounciation dictionary")
         for w in self.obj_words:
             if w.end_sound:
                 self.pron_dict[w.word] = w.pron
@@ -354,7 +354,7 @@ if __name__ == '__main__':
 
     ''')
     text = requests.get(path).text
-    name = input('What is the name of this text? ')
+    name = input('  What is the name of this text? ')
     poem = Poem(removeNonAscii(text), name)
     print('\n\nA sonnet based on the text of {}'.format(name))
     poem.shakes_poem()
