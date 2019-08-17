@@ -225,7 +225,7 @@ class Poem(object):
         seed = random.choice(range(1000000000))
         random.seed(seed)
         word_1 = random.choice(list(self.rhyme_dict.keys()))
-        while self.rhyme_dict[word_1] == []:
+        while self.rhyme_dict[word_1] == [] or word_1.pron == None:
             word_1 = random.choice(list(self.rhyme_dict.keys()))
         word_2 = random.choice(self.rhyme_dict[word_1])
         return [word_1, word_2]
