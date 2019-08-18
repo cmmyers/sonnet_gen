@@ -344,8 +344,7 @@ def removeNonAscii(s):
 if __name__ == '__main__':
     path = input('''
     Enter the location of a text file.
-    https://www.gutenberg.org/browse/scores/top
-    is a great place to find public domain literature.
+    https://www.gutenberg.org/browse/scores/top is a great place to find public domain literature.
     ''')
     text = requests.get(path).text
     name = input('\n\tWhat is the name of this text? ')
