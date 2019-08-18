@@ -1,7 +1,7 @@
 
 
 '''
-Executive decisions, as of 12/14/16, re: what defines a rhyme:
+Executive decisions re: what defines a rhyme:
 
 one-syllable words with the same end_sound are rhymes.
 one-syllable words rhyme with all multi-syllabic words with the same end_sound
@@ -12,18 +12,17 @@ words of more than two syllable will only be considered by their last two syllab
 THIS IS SUBJECT TO CHANGE AT ANY time
 '''
 
-
+from collections import Counter, defaultdict
 import nltk
 from nltk.corpus import cmudict
 from nltk.tokenize import word_tokenize, wordpunct_tokenize, sent_tokenize
-import pandas as pd
-import re
-import string
 import numpy as np
 import os.path
+import pandas as pd
 import pickle
-from collections import Counter, defaultdict
 import random
+import re
+import string
 import sys
 
 #dictionary to look up pronounciations
@@ -51,13 +50,13 @@ class Poem(object):
         self.obj_words = [Word(w) for w in self.str_words]
         #all words as keys, all words that precede the keyword with counts
         self.pairs_dict = self.make_doubles(self.fulltext)
-        #not sure how this is different from above
+        #bigrams as keys with preceding words as values
         self.triples_dict = self.make_triples(self.fulltext)
 
         #open or create a dictionary with the pronounciation of all unique words
         if fname:
             dict_name = 'pron_dict_' + fname +  '.pkl'
-            if os.path.isfile(dict_name):
+            if os.path.isfile('dicts/{}'.format(dict_name)):
                 print "loading pronounciation dictionary"
                 self.pron_dict = load_obj(dict_name)
             else:
@@ -66,7 +65,7 @@ class Poem(object):
 
         #open or create a dictionary with all rhymes of all unique words
             rh_dict_name = 'rh_dict_' + fname +  '.pkl'
-            if os.path.isfile(rh_dict_name):
+            if os.path.isfile('dicts/{}'.format(rh_dict_name)):
                 print "loading rhyming dictionary"
                 self.rhyme_dict = load_obj(rh_dict_name)
             else:
@@ -139,7 +138,8 @@ class Poem(object):
         return rhymes
 
     def get_next_word(self, anchor_pos, next_pos):
-        '''Given an anchor part of speech and the part of speech of the word it should rhyme with, generate potential pairs of words and return a random option'''
+        '''Given an anchor part of speech and the part of speech of the word it should rhyme with,
+        generate potential pairs of words and return a random option'''
 
         pot_next_words = []
         while pot_next_words == []:
@@ -157,7 +157,7 @@ class Poem(object):
         random.seed(seed)
         s_len = len(sent_temp)
 
-        #This will find an anchor word and build the sentence around it?
+        #This will find an anchor word and build the sentence around it
 
         anchor, next_word = get_next_word(sent_temp[-1][1], sent_temp[-2][1])
 
@@ -289,7 +289,8 @@ class Word(object):
         except KeyError:
             self.pron = None
             self.pos = None
-            #if a word is not found but we still want to be able to count it syllables, we use an ave of 3.5 letters per syl.
+            #if a word is not found but we still want to be able to count it syllables,
+            #we use an ave of 3.5 letters per syl.
             self.syls = int(len(self.word)/3.5)
             self.end_sound = None
             self.penul_vowel = None

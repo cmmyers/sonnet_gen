@@ -349,12 +349,9 @@ if __name__ == '__main__':
     Enter the location of a text file.
     https://www.gutenberg.org/browse/scores/top
     is a great place to find public domain literature.
-
-
-
     ''')
     text = requests.get(path).text
-    name = input('  What is the name of this text? ')
+    name = input('\n\tWhat is the name of this text? ')
     poem = Poem(removeNonAscii(text), name)
     print('\n\nA sonnet based on the text of {}'.format(name))
     poem.shakes_poem()
