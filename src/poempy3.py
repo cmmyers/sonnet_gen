@@ -342,10 +342,9 @@ def removeNonAscii(s):
 
 
 if __name__ == '__main__':
-    path = input('''Enter the location of a text file.\nhttps://www.gutenberg.org/browse/scores/top is a great place to find public domain literature.\n
-    ''')
+    path = input('''Enter the location of a text file.\nhttps://www.gutenberg.org/browse/scores/top is a great place to find public domain literature.\n''')
     text = requests.get(path).text
-    name = input('\nWhat is the name of this text?\n')
+    name = input('\nWhat is the name of this text?\n\n')
     poem = Poem(removeNonAscii(text), name)
     print('\n\nA sonnet based on the text of {}'.format(name))
     poem.shakes_poem()
